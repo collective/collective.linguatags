@@ -8,13 +8,9 @@ python:
   - 2.7
 before_install:
   - mkdir -p $HOME/buildout-cache/{eggs,downloads}
-  - mkdir $HOME/.buildout
-  - echo "[buildout]" > $HOME/.buildout/default.cfg
-  - echo "download-cache = $HOME/buildout-cache/downloads" >> $HOME/.buildout/default.cfg
-  - echo "eggs-directory = $HOME/buildout-cache/eggs" >> $HOME/.buildout/default.cfg
 install:
   - pip install --upgrade pip setuptools zc.buildout coveralls coverage==3.7 createcoverage
-  - buildout -Nc travis.cfg
+  - buildout -Nc travis.cfg buildout:eggs-directory=$HOME/buildout-cache/eggs buildout:download-cache=$HOME/buildout-cache/downloads
 script:
   - bin/code-analysis
   - bin/test
