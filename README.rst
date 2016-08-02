@@ -40,6 +40,10 @@ Contribute
 .. image:: https://travis-ci.org/collective/collective.linguatags.svg?branch=master
     :target: https://travis-ci.org/collective/collective.linguatags
 
+.. image:: https://coveralls.io/repos/github/collective/collective.linguatags/badge.svg?branch=master
+    :target: https://coveralls.io/github/collective/collective.linguatags?branch=master
+
+
 - Issue Tracker: https://github.com/collective/collective.linguatags/issues
 - Source Code: https://github.com/collective/collective.linguatags
 
