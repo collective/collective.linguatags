@@ -3,12 +3,13 @@ from collective.linguatags import _
 from collective.linguatags.storage import get_storage
 from persistent.dict import PersistentDict
 from plone import api
-from Products.Five import BrowserView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.i18n.normalizer.base import mapUnicode
 from Products.CMFPlone.utils import safe_unicode
+from Products.Five import BrowserView
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 import re
+
 
 num_sort_regex = re.compile('\d+')
 
