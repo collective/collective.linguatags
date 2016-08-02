@@ -37,6 +37,9 @@ and then running ``bin/buildout``
 Contribute
 ----------
 
+.. image:: https://travis-ci.org/collective/collective.linguatags.svg?branch=master
+    :target: https://travis-ci.org/collective/collective.linguatags
+
 - Issue Tracker: https://github.com/collective/collective.linguatags/issues
 - Source Code: https://github.com/collective/collective.linguatags
 
