@@ -6,33 +6,16 @@
 collective.linguatags
 ==============================================================================
 
-Tell me what your product does
+Multilingual Tags for Plone
 
 Features
 --------
 
-- Can be bullet points
-
-
-Examples
---------
-
-This add-on can be seen in action at the following sites:
-- Is there a page on the internet where everybody can see the features?
-
-
-Documentation
--------------
-
-Full documentation for end users can be found in the "docs" folder, and is also available online at http://docs.plone.org/foo/bar
-
-
-Translations
-------------
-
-This product has been translated into
-
-- Klingon (thanks, K'Plai)
+- tags are entered in one canonical language
+- a tag is turned into a message id
+- collective.linguatags provide an own i18n domain 'linguatags'
+- all messages in this domain are translatable ttw with a controlpanel
+- view/viewlets showing tags are overridden to show the translated tag
 
 
 Installation
@@ -56,14 +39,11 @@ Contribute
 
 - Issue Tracker: https://github.com/collective/collective.linguatags/issues
 - Source Code: https://github.com/collective/collective.linguatags
-- Documentation: https://docs.plone.org/foo/bar
 
 
-Support
--------
+We'd be happy to see many commits, forks and pull-requests to make collective.linguatags even better.
 
-If you are having issues, please let us know.
-We have a mailing list located at: project@example.com
+If you are having issues, please let us know. `Open an issue <http://github.com/collective/collective.linguatags/issues>`_ or send us an e-mail to dev@bluedynamics.com.
 
 
 License
