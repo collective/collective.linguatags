@@ -5,6 +5,26 @@ from persistent.dict import PersistentDict
 from plone import api
 from Products.Five import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from plone.i18n.normalizer.base import mapUnicode
+from Products.CMFPlone.utils import safe_unicode
+
+import re
+
+num_sort_regex = re.compile('\d+')
+
+
+def zero_fill(matchobj):
+    return matchobj.group().zfill(4)
+
+
+def sort_func(value):
+    if not isinstance(value, basestring):
+        return value
+    # Ignore case, normalize accents, strip spaces
+    value = mapUnicode(safe_unicode(value)).lower().strip()
+    # Replace numbers with zero filled numbers
+    value = num_sort_regex.sub(zero_fill, value)
+    return value.encode('utf-8')
 
 
 class LinguaTagsControlPanel(BrowserView):
@@ -25,7 +45,7 @@ class LinguaTagsControlPanel(BrowserView):
     def tags(self):
         catalog = api.portal.get_tool('portal_catalog')
         index = catalog._catalog.getIndex('Subject')
-        for tag in index._index:
+        for tag in sorted(index._index, key=sort_func):
             yield tag
 
     def translation(self, tag, language):
