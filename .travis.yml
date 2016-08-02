@@ -14,12 +14,12 @@ before_install:
   - echo "eggs-directory = $HOME/buildout-cache/eggs" >> $HOME/.buildout/default.cfg
 install:
   - pip install --upgrade pip setuptools zc.buildout coveralls coverage==3.7 createcoverage
-  - bin/buildout -Nc travis.cfg
+  - buildout -Nc travis.cfg
 script:
   - bin/code-analysis
   - bin/test
 after_success:
-  - bin/createcoverage
+  - createcoverage
   - coveralls
 
 notifications:
