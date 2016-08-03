@@ -39,8 +39,8 @@ class TestTranslationDomain(unittest.TestCase):
         default = u'bär'
 
         from collective.linguatags.storage import get_storage
-        storage = get_storage()
-        storage[msgid] = {'de': 'defoö', 'it': 'itfoö'}
+        storage = get_storage(rw=True)
+        storage[msgid.encode('utf8')] = {'de': 'defoö', 'it': 'itfoö'}
         self.assertEqual(
             u'defoö',
             self.util.translate(msgid, target_language='de', default=default)
@@ -51,8 +51,8 @@ class TestTranslationDomain(unittest.TestCase):
         default = u'bär'
 
         from collective.linguatags.storage import get_storage
-        storage = get_storage()
-        storage[msgid] = {'de': 'defoö', 'it': 'itfoö'}
+        storage = get_storage(rw=True)
+        storage[msgid.encode('utf8')] = {'de': 'defoö', 'it': 'itfoö'}
 
         from zope.i18nmessageid import MessageFactory
         fac = MessageFactory('linguatags')
@@ -70,8 +70,12 @@ def test_translate_with_messagid_and_negotiation(self):
         default = u'bär'
 
         from collective.linguatags.storage import get_storage
-        storage = get_storage()
-        storage[msgid] = {'de': 'defoö', 'it': 'itfoö', 'en': 'brexit'}
+        storage = get_storage(rw=True)
+        storage[msgid.encode('utf8')] = {
+            'de': 'defoö',
+            'it': 'itfoö',
+            'en': 'brexit'
+        }
 
         from zope.i18nmessageid import MessageFactory
         fac = MessageFactory('linguatags')
