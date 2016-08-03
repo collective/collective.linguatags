@@ -8,7 +8,7 @@ mf = MessageFactory('linguatags')
 class KeywordsViewlet(ViewletBase):
     """Return messagestrings for keywords"""
 
-    def displayMessageString(self, keyword):
+    def display_message_string(self, keyword):
         if not isinstance(keyword, unicode):
             keyword = keyword.decode('utf8')
         return mf(keyword)
