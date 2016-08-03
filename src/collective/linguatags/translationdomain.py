@@ -20,13 +20,19 @@ class TagsTranslationDomain(object):
         target_language=None,
         default=None
     ):
-        # handle default
-        if default is None:
-            default = unicode(msgid, encoding='utf8')
 
+        msgkey = msgid
+        if isinstance(msgkey, unicode):
+            msgkey = msgkey.encode('utf8')
         storage = get_storage()
-        translations = storage.get(msgid, None)
+        translations = storage.get(msgkey, None)
+
         if translations is None:
+            # handle default
+            if default is None:
+                default = msgid
+            if not isinstance(default, unicode):
+                default = default.decode('utf8')
             return default
 
         # find out what the target language should be
