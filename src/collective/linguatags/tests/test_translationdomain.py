@@ -63,3 +63,22 @@ class TestTranslationDomain(unittest.TestCase):
             u'itfoö',
             api.portal.translate(msg, lang='it')
         )
+
+
+def test_translate_with_messagid_and_negotiation(self):
+        msgid = u'foö'
+        default = u'bär'
+
+        from collective.linguatags.storage import get_storage
+        storage = get_storage()
+        storage[msgid] = {'de': 'defoö', 'it': 'itfoö', 'en': 'brexit'}
+
+        from zope.i18nmessageid import MessageFactory
+        fac = MessageFactory('linguatags')
+        msg = fac(msgid, default)
+
+        from plone import api
+        self.assertEqual(
+            u'brexit',
+            api.portal.translate(msg, context=self.portal)
+        )
