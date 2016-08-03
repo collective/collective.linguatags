@@ -9,4 +9,6 @@ class KeywordsViewlet(ViewletBase):
     """Return messagestrings for keywords"""
 
     def displayMessageString(self, keyword):
+        if not isinstance(keyword, unicode):
+            keyword = keyword.decode('utf8')
         return mf(keyword)
