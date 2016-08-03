@@ -36,7 +36,9 @@ class LinguaTagsControlPanel(BrowserView):
     def __init__(self, context, request):
         self.context = context
         self.request = request
-        self.storage = get_storage(rw=True)
+        self.storage = get_storage(
+            rw=self.request.form.get('submitted', False)
+        )
 
     def available_languages(self):
         return sorted(
