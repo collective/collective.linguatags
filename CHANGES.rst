@@ -2,11 +2,11 @@ Changelog
 =========
 
 
-1.1 (unreleased)
-----------------
+1.0.1 (unreleased)
+------------------
 
-- Nothing changed yet.
-
+- Fix: Usage of non unicode msgids in tests.
+  [jensens]
 
 1.0 (2016-08-03)
 ----------------

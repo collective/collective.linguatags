@@ -14,20 +14,21 @@ class TestTranslationDomain(unittest.TestCase):
         from zope.i18n.interfaces import ITranslationDomain
         from zope.component import queryUtility
         self.util = queryUtility(ITranslationDomain, name='linguatags')
+        self.portal.REQUEST.form['submitted'] = '1'
 
     def test_utility_exists(self):
         """Test if collective.linguatags is cleanly uninstalled."""
         self.assertIsNotNone(self.util)
 
     def test_utility_fallback(self):
-        msgid = 'foö'
+        msgid = u'foö'
         self.assertEqual(
-            unicode(msgid, encoding='utf8'),
+            msgid,
             self.util.translate(msgid)
         )
 
     def test_utility_default(self):
-        msgid = 'foö'
+        msgid = u'foö'
         default = u'bär'
         self.assertEqual(
             default,
@@ -35,7 +36,7 @@ class TestTranslationDomain(unittest.TestCase):
         )
 
     def test_utility_storage(self):
-        msgid = 'foö'
+        msgid = u'foö'
         default = u'bär'
 
         from collective.linguatags.storage import get_storage
