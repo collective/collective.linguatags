@@ -1,4 +1,5 @@
-graft src/collective
 graft docs
+graft src/collective
 include *.rst
+include *.sh
 global-exclude *.pyc
