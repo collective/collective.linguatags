@@ -5,6 +5,7 @@ from zope.component import getUtility
 from zope.i18n.interfaces import INegotiator
 from zope.i18n.interfaces import ITranslationDomain
 from zope.interface import implementer
+import six
 
 
 @implementer(ITranslationDomain)
@@ -25,7 +26,8 @@ class TagsTranslationDomain(object):
     ):
 
         msgkey = msgid
-        if isinstance(msgkey, unicode):
+        # TODO: check if this returns the correct value or is even needed in python3
+        if isinstance(msgkey, six.text_type):
             msgkey = msgkey.encode('utf8')
         storage = get_storage()
         translations = storage.get(msgkey, None)
@@ -34,7 +36,8 @@ class TagsTranslationDomain(object):
             # handle default
             if default is None:
                 default = msgid
-            if not isinstance(default, unicode):
+            # TODO: check if this returns the correct value or is even needed in python3
+            if not isinstance(default, six.text_type):
                 default = default.decode('utf8')
             return default
 
@@ -46,6 +49,7 @@ class TagsTranslationDomain(object):
 
         # fetch matching translation or default
         message = translations.get(target_language, default)
-        if not isinstance(message, unicode):
+        # TODO: check if this returns the correct value or is even needed in python3
+        if not isinstance(message, six.text_type):
             return message.decode('utf-8')
         return message

@@ -9,6 +9,7 @@ from Products.Five import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 import re
+import six
 
 
 num_sort_regex = re.compile('\d+')
@@ -19,7 +20,7 @@ def zero_fill(matchobj):
 
 
 def sort_func(value):
-    if not isinstance(value, basestring):
+    if not isinstance(value, six.string_types):
         return value
     # Ignore case, normalize accents, strip spaces
     value = mapUnicode(safe_unicode(value)).lower().strip()
