@@ -11,6 +11,8 @@ Changelog
 1.0.1 (unreleased)
 ------------------
 
+- Add support for Plone 5.2 and Python 3.
+  [spereverde]
 - Fix: Usage of non unicode msgids in tests.
   [jensens]
 
