@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from plone.app.layout.viewlets import ViewletBase
 from zope.i18nmessageid import MessageFactory
+
 import six
 
 
