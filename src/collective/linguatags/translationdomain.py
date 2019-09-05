@@ -18,7 +18,10 @@ class TagsTranslationDomain(object):
         mapping=None,
         context=None,
         target_language=None,
-        default=None
+        default=None,
+        msgid_plural = None,
+        default_plural = None, 
+        number = None,
     ):
 
         msgkey = msgid
