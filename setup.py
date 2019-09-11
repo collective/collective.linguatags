@@ -14,7 +14,7 @@ long_description = '\n\n'.join([
 
 setup(
     name='collective.linguatags',
-    version='1.0.1.dev0',
+    version='1.1.dev0',
     description="Multilingual Keywords for Plone",
     long_description=long_description,
     # Get more from https://pypi.python.org/pypi?%3Aaction=list_classifiers
@@ -22,6 +22,7 @@ setup(
         "Environment :: Web Environment",
         "Framework :: Plone",
         "Framework :: Plone :: 5.0",
+        "Framework :: Plone :: 5.1",
         "Framework :: Plone :: 5.2",
         "Programming Language :: Python",
         "Programming Language :: Python :: 2.7",
