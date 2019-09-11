@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """Setup tests for this package."""
-from collective.linguatags.testing import COLLECTIVE_LINGUATAGS_INTEGRATION_TESTING  # noqa
+from collective.linguatags.testing import (
+    COLLECTIVE_LINGUATAGS_INTEGRATION_TESTING  # noqa,
+)
 
 import unittest
 
@@ -67,23 +69,23 @@ class TestTranslationDomain(unittest.TestCase):
 
 
 def test_translate_with_messagid_and_negotiation(self):
-        msgid = u'foö'
-        default = u'bär'
+    msgid = u'foö'
+    default = u'bär'
 
-        from collective.linguatags.storage import get_storage
-        storage = get_storage(rw=True)
-        storage[msgid.encode('utf8')] = {
-            'de': 'defoö',
-            'it': 'itfoö',
-            'en': 'brexit'
-        }
+    from collective.linguatags.storage import get_storage
+    storage = get_storage(rw=True)
+    storage[msgid.encode('utf8')] = {
+        'de': 'defoö',
+        'it': 'itfoö',
+        'en': 'brexit'
+    }
 
-        from zope.i18nmessageid import MessageFactory
-        fac = MessageFactory('linguatags')
-        msg = fac(msgid, default)
+    from zope.i18nmessageid import MessageFactory
+    fac = MessageFactory('linguatags')
+    msg = fac(msgid, default)
 
-        from plone import api
-        self.assertEqual(
-            u'brexit',
-            api.portal.translate(msg, context=self.portal)
-        )
+    from plone import api
+    self.assertEqual(
+        u'brexit',
+        api.portal.translate(msg, context=self.portal)
+    )
