@@ -2,6 +2,7 @@
 """Setup tests for this package."""
 from collective.linguatags.testing import COLLECTIVE_LINGUATAGS_INTEGRATION_TESTING  # noqa,
 
+import six
 import unittest
 
 
@@ -37,7 +38,10 @@ class TestTranslationDomain(unittest.TestCase):
         from collective.linguatags.storage import get_storage
 
         storage = get_storage(rw=True)
-        storage[msgid.encode("utf8")] = {"de": "defoö", "it": "itfoö"}
+        if six.PY2:
+            storage[msgid.encode("utf8")] = {"de": "defoö", "it": "itfoö"}
+        else:
+            storage[msgid] = {"de": "defoö", "it": "itfoö"}
         self.assertEqual(
             u"defoö", self.util.translate(msgid, target_language="de", default=default)
         )
@@ -49,7 +53,10 @@ class TestTranslationDomain(unittest.TestCase):
         from collective.linguatags.storage import get_storage
 
         storage = get_storage(rw=True)
-        storage[msgid.encode("utf8")] = {"de": "defoö", "it": "itfoö"}
+        if six.PY2:
+            storage[msgid.encode("utf8")] = {"de": "defoö", "it": "itfoö"}
+        else:
+            storage[msgid] = {"de": "defoö", "it": "itfoö"}
 
         from zope.i18nmessageid import MessageFactory
 
@@ -68,7 +75,10 @@ def test_translate_with_messagid_and_negotiation(self):
     from collective.linguatags.storage import get_storage
 
     storage = get_storage(rw=True)
-    storage[msgid.encode("utf8")] = {"de": "defoö", "it": "itfoö", "en": "brexit"}
+    if six.PY2:
+        storage[msgid.encode("utf8")] = {"de": "defoö", "it": "itfoö", "en": "brexit"}
+    else:
+        storage[msgid] = {"de": "defoö", "it": "itfoö", "en": "brexit"}
 
     from zope.i18nmessageid import MessageFactory
 
