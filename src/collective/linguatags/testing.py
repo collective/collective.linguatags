@@ -21,7 +21,7 @@ class CollectiveLinguatagsLayer(PloneSandboxLayer):
         self.loadZCML(package=collective.linguatags)
 
     def setUpPloneSite(self, portal):
-        applyProfile(portal, 'collective.linguatags:default')
+        applyProfile(portal, "collective.linguatags:default")
 
 
 COLLECTIVE_LINGUATAGS_FIXTURE = CollectiveLinguatagsLayer()
@@ -29,13 +29,13 @@ COLLECTIVE_LINGUATAGS_FIXTURE = CollectiveLinguatagsLayer()
 
 COLLECTIVE_LINGUATAGS_INTEGRATION_TESTING = IntegrationTesting(
     bases=(COLLECTIVE_LINGUATAGS_FIXTURE,),
-    name='CollectiveLinguatagsLayer:IntegrationTesting'
+    name="CollectiveLinguatagsLayer:IntegrationTesting",
 )
 
 
 COLLECTIVE_LINGUATAGS_FUNCTIONAL_TESTING = FunctionalTesting(
     bases=(COLLECTIVE_LINGUATAGS_FIXTURE,),
-    name='CollectiveLinguatagsLayer:FunctionalTesting'
+    name="CollectiveLinguatagsLayer:FunctionalTesting",
 )
 
 
@@ -43,7 +43,7 @@ COLLECTIVE_LINGUATAGS_ACCEPTANCE_TESTING = FunctionalTesting(
     bases=(
         COLLECTIVE_LINGUATAGS_FIXTURE,
         REMOTE_LIBRARY_BUNDLE_FIXTURE,
-        z2.ZSERVER_FIXTURE
+        z2.ZSERVER_FIXTURE,
     ),
-    name='CollectiveLinguatagsLayer:AcceptanceTesting'
+    name="CollectiveLinguatagsLayer:AcceptanceTesting",
 )
