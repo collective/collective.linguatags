@@ -4,7 +4,7 @@ from plone import api
 from zope.annotation.interfaces import IAnnotations
 
 
-STORAGE_KEY = 'collective.linguatags'
+STORAGE_KEY = "collective.linguatags"
 
 
 def get_storage(rw=False):

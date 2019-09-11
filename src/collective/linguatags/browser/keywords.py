@@ -5,7 +5,7 @@ from zope.i18nmessageid import MessageFactory
 import six
 
 
-mf = MessageFactory('linguatags')
+mf = MessageFactory("linguatags")
 
 
 class KeywordsViewlet(ViewletBase):
@@ -13,5 +13,5 @@ class KeywordsViewlet(ViewletBase):
 
     def display_message_string(self, keyword):
         if six.PY2 and not isinstance(keyword, six.text_type):
-            keyword = keyword.decode('utf8')
+            keyword = keyword.decode("utf8")
         return mf(keyword)

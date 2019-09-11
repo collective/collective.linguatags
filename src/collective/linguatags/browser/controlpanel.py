@@ -12,7 +12,7 @@ import re
 import six
 
 
-num_sort_regex = re.compile('\d+')
+num_sort_regex = re.compile("\d+")
 
 
 def zero_fill(matchobj):
@@ -26,37 +26,33 @@ def sort_func(value):
     value = mapUnicode(safe_unicode(value)).lower().strip()
     # Replace numbers with zero filled numbers
     value = num_sort_regex.sub(zero_fill, value)
-    return value.encode('utf-8')
+    return value.encode("utf-8")
 
 
 class LinguaTagsControlPanel(BrowserView):
     """Control panel for the portal actions."""
 
-    template = ViewPageTemplateFile('controlpanel.pt')
+    template = ViewPageTemplateFile("controlpanel.pt")
 
     def __init__(self, context, request):
         self.context = context
         self.request = request
-        self.storage = get_storage(
-            rw=self.request.form.get('submitted', False)
-        )
+        self.storage = get_storage(rw=self.request.form.get("submitted", False))
 
     def available_languages(self):
-        return sorted(
-            api.portal.get_registry_record('plone.available_languages')
-        )
+        return sorted(api.portal.get_registry_record("plone.available_languages"))
 
     def tags(self):
-        catalog = api.portal.get_tool('portal_catalog')
-        index = catalog._catalog.getIndex('Subject')
+        catalog = api.portal.get_tool("portal_catalog")
+        index = catalog._catalog.getIndex("Subject")
         for tag in sorted(index._index, key=sort_func):
             yield tag
 
     def translation(self, tag, language):
-        return self.storage.get(tag, {}).get(language, '')
+        return self.storage.get(tag, {}).get(language, "")
 
     def __call__(self):
-        if self.request.form.get('submitted', False):
+        if self.request.form.get("submitted", False):
             for tag in self.tags():
                 value = self.request.form.get(tag, None)
                 if value is None:
@@ -68,8 +64,5 @@ class LinguaTagsControlPanel(BrowserView):
                     if lang not in self.available_languages():
                         continue
                     self.storage[tag][lang] = value[lang]
-                api.portal.show_message(
-                    _('Translations saved'),
-                    request=self.request
-                )
+                api.portal.show_message(_("Translations saved"), request=self.request)
         return self.template()

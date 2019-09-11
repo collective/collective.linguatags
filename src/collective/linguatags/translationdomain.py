@@ -12,7 +12,7 @@ import six
 @implementer(ITranslationDomain)
 class TagsTranslationDomain(object):
 
-    domain = 'linguatags'
+    domain = "linguatags"
 
     def translate(
         self,
@@ -28,7 +28,7 @@ class TagsTranslationDomain(object):
 
         msgkey = msgid
         if six.PY2 and isinstance(msgkey, six.text_type):
-            msgkey = msgkey.encode('utf8')
+            msgkey = msgkey.encode("utf8")
         storage = get_storage()
         translations = storage.get(msgkey, None)
 
@@ -37,17 +37,17 @@ class TagsTranslationDomain(object):
             if default is None:
                 default = msgid
             if six.PY2 and not isinstance(default, six.text_type):
-                default = default.decode('utf8')
+                default = default.decode("utf8")
             return default
 
         # find out what the target language should be
         if target_language is None and context is not None:
-            langs = api.portal.get_registry_record('plone.available_languages')
+            langs = api.portal.get_registry_record("plone.available_languages")
             negotiator = getUtility(INegotiator)
             target_language = negotiator.getLanguage(langs, context)
 
         # fetch matching translation or default
         message = translations.get(target_language, default)
         if six.PY2 and not isinstance(message, six.text_type):
-            return message.decode('utf-8')
+            return message.decode("utf-8")
         return message
