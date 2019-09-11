@@ -4,6 +4,7 @@
 *.mo
 *.py?
 *.swp
+*/**.DS_Store
 # dirs
 bin/
 buildout-cache/
