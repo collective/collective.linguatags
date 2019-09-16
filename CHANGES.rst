@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.1 (unreleased)
-------------------
+1.1 (2019-09-16)
+----------------
 
 - Signature fix for latest zope.i18n 4.6.2
   [agitator]
