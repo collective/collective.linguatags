@@ -1,6 +1,6 @@
 #!/bin/bash
 cd src
-isort -y
+isort .
 black .
 cd ..
 ./bin/code-analysis
