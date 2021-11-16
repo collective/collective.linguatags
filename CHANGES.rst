@@ -1,10 +1,11 @@
 Changelog
 =========
 
-1.2 (unreleased)
+2.0 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Drop Python 2 support. [jensens]
+- Move CI to GitHub Actions. [jensens]
 
 
 1.1 (2019-09-16)
