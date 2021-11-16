@@ -1,3 +1,0 @@
--c constraints-5.2.x.txt
-setuptools
-zc.buildout

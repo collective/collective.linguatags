@@ -4,6 +4,7 @@ Changelog
 2.0 (unreleased)
 ----------------
 
+- Drop Plone 5.2 support. [jensens]
 - Drop Python 2 support. [jensens]
 - Move CI to GitHub Actions. [jensens]
 
