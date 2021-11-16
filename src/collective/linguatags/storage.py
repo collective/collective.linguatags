@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from BTrees.OOBTree import OOBTree
 from plone import api
 from zope.annotation.interfaces import IAnnotations

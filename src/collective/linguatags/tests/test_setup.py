@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Setup tests for this package."""
 from collective.linguatags.testing import COLLECTIVE_LINGUATAGS_INTEGRATION_TESTING  # noqa,
 from plone import api

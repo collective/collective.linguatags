@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-s
 from collective.linguatags import _
 from collective.linguatags.storage import get_storage
 from persistent.dict import PersistentDict
@@ -9,10 +8,9 @@ from Products.Five import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 import re
-import six
 
 
-num_sort_regex = re.compile("\d+")
+num_sort_regex = re.compile(r"\d+")
 
 
 def zero_fill(matchobj):
@@ -20,7 +18,7 @@ def zero_fill(matchobj):
 
 
 def sort_func(value):
-    if not isinstance(value, six.string_types):
+    if not isinstance(value, str):
         return value
     # Ignore case, normalize accents, strip spaces
     value = mapUnicode(safe_unicode(value)).lower().strip()
@@ -45,8 +43,7 @@ class LinguaTagsControlPanel(BrowserView):
     def tags(self):
         catalog = api.portal.get_tool("portal_catalog")
         index = catalog._catalog.getIndex("Subject")
-        for tag in sorted(index._index, key=sort_func):
-            yield tag
+        yield from sorted(index._index, key=sort_func)
 
     def translation(self, tag, language):
         return self.storage.get(tag, {}).get(language, "")
