@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.0 (unreleased)
+2.0 (2021-11-17)
 ----------------
 
 - Fixes for Plone 6 support with BS5 [jensens]
