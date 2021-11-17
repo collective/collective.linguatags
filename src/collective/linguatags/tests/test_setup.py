@@ -1,14 +1,11 @@
 """Setup tests for this package."""
-from collective.linguatags.testing import COLLECTIVE_LINGUATAGS_INTEGRATION_TESTING  # noqa,
-from plone import api
+from collective.linguatags.testing import (  # noqa,
+    COLLECTIVE_LINGUATAGS_INTEGRATION_TESTING,
+)
+from plone.browserlayer import utils
+from Products.CMFPlone.utils import get_installer
 
 import unittest
-
-
-try:
-    from Products.CMFPlone.utils import get_installer
-except ImportError:
-    get_installer = None
 
 
 class TestSetup(unittest.TestCase):
@@ -19,19 +16,15 @@ class TestSetup(unittest.TestCase):
     def setUp(self):
         """Custom shared utility setup for tests."""
         self.portal = self.layer["portal"]
-        if get_installer:
-            self.installer = get_installer(self.portal, self.layer["request"])
-        else:
-            self.installer = api.portal.get_tool("portal_quickinstaller")
+        self.installer = get_installer(self.portal, self.layer["request"])
 
     def test_product_installed(self):
         """Test if collective.linguatags is installed."""
-        self.assertTrue(self.installer.isProductInstalled("collective.linguatags"))
+        self.assertTrue(self.installer.is_product_installed("collective.linguatags"))
 
     def test_browserlayer(self):
         """Test that ICollectiveLinguatagsLayer is registered."""
         from collective.linguatags.interfaces import ICollectiveLinguatagsLayer
-        from plone.browserlayer import utils
 
         self.assertIn(ICollectiveLinguatagsLayer, utils.registered_layers())
 
@@ -42,19 +35,15 @@ class TestUninstall(unittest.TestCase):
 
     def setUp(self):
         self.portal = self.layer["portal"]
-        if get_installer:
-            self.installer = get_installer(self.portal, self.layer["request"])
-        else:
-            self.installer = api.portal.get_tool("portal_quickinstaller")
-        self.installer.uninstallProducts(["collective.linguatags"])
+        self.installer = get_installer(self.portal, self.layer["request"])
+        self.installer.uninstall_product("collective.linguatags")
 
     def test_product_uninstalled(self):
         """Test if collective.linguatags is cleanly uninstalled."""
-        self.assertFalse(self.installer.isProductInstalled("collective.linguatags"))
+        self.assertFalse(self.installer.is_product_installed("collective.linguatags"))
 
     def test_browserlayer_removed(self):
         """Test that ICollectiveLinguatagsLayer is removed."""
         from collective.linguatags.interfaces import ICollectiveLinguatagsLayer
-        from plone.browserlayer import utils
 
         self.assertNotIn(ICollectiveLinguatagsLayer, utils.registered_layers())

@@ -1,5 +1,5 @@
 """Setup tests for this package."""
-from collective.linguatags.testing import COLLECTIVE_LINGUATAGS_INTEGRATION_TESTING  # noqa,
+from collective.linguatags.testing import COLLECTIVE_LINGUATAGS_INTEGRATION_TESTING
 
 import unittest
 
