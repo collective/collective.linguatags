@@ -21,6 +21,9 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
         plone-version: ${{ matrix.plone-version }}
+    - name: Install addon package, in editable mode, with pip
+      run: |
+        pip install -e ".[test]" --use-deprecated legacy-resolver
     - name: Run tests (located inside src)
       run: |
         zope-testrunner --auto-color --auto-progress --test-path src/

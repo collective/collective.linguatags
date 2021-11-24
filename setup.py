@@ -50,6 +50,7 @@ setup(
             "plone.app.testing",
             "plone.app.contenttypes[test]",
             "plone.app.robotframework",
+            "zope.testrunner",
         ]
     },
     entry_points="""
