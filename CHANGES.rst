@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.0.1 (unreleased)
+2.0.1 (2023-06-14)
 ------------------
 
 - Remove unneeded `autoinclude` from `configure.zcml` and prevent from random namesapce declaration error.
